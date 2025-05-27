@@ -22,3 +22,7 @@ Add a new command search_ship for searching a ship by name. The search should be
 For example, if I searched "disney", I should find the ship "DISNEY DREAM".
 Speed Histogram
 Add a new command speed_histogram that creates an histogram of the speed of the ships, and save it to a file.
+
+## Solution
+
+(c) Justus Decker 2025
