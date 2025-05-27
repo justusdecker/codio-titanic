@@ -21,16 +21,20 @@ class Titanic:
         if inp == 'help':
                 print("help\nshow_countries\ntop_countries\n")
         elif inp == 'show_countries': 
-
-                countrys = {ship['COUNTRY'] for ship in self.data['data']} #store all countrys in a set to eliminate duplicates
-
-                print_string = '\n'.join(countrys) # create a string that contains all countrys. 
-                # [REASON]: Calling the print function multiple times is very slow.
-                # print_string = 1.5ms (^3.2 times faster) + time for creating the string approximately (^3 times)
-                # print for    = 4.8ms
-                print(print_string)
-        elif inp == 'top_countries':
-                pass
+                countryies = {ship['COUNTRY'] for ship in self.data['data']} #store all countrys in a set to eliminate duplicates
+                countryies = list(countryies) # convert to a list to sort this later
+                countryies = sorted(countryies)
+                for country in countryies:
+                    print(country)
+        elif inp.startswith('top_countries'):
+            splitted = inp.split(' ')
+            if len(splitted) == 2:
+                if splitted[1].isdecimal():
+                    pass
+                else:
+                    print(f"Cant process the given argument [{splitted[1]}]")
+            else: # splitted not [..., ...]
+                print(f'Different argument count! Cant unpack({len(splitted) - 1} given. Expected 1)')
     def load_data(file_path: str) -> dict:
         "Load a json file"
         with open(file_path, "r") as handle:
